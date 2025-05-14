@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from "react";
+import {useEffect, useState, useContext} from "react";
 import { 
   View, 
   Text, 
@@ -19,19 +19,24 @@ export default function Home(){
 
   const { genres, loading, games } = useContext(AppContext);
 
-
   if(loading){
     return(
+
       <View style={styles.loadingScreen}>
+
         <ActivityIndicator
           size={50}
           color="#FF455F"
         />
+
       </View>
+
     )
+
   }
 
   return(
+
     <View style={styles.container}>
 
       <Header/>
@@ -56,7 +61,9 @@ export default function Home(){
       />
       
     </View>
+
   )
+  
 }
 
 const styles = StyleSheet.create({

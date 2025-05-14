@@ -1,4 +1,3 @@
-import React from "react";
 import {
     SafeAreaView,
     Text,
@@ -7,10 +6,16 @@ import {
     TouchableOpacity
 } from "react-native";
 
+import { useNavigation } from '@react-navigation/native'
+
 import Feather from 'react-native-vector-icons/Feather'
 
 export default function Header(){
+
+    const navigation = useNavigation();
+
     return(
+        
         <SafeAreaView style={styles.container}>
             
             <View style={styles.titleContainer}>
@@ -21,23 +26,27 @@ export default function Header(){
 
             </View>
 
-            <TouchableOpacity style={styles.iconContainer}>
+            <TouchableOpacity 
+                style={styles.iconContainer}
+                onPress={() => navigation.navigate('Favorites')}
+            >
+
                 <Feather
-                name="bookmark"
-                size={25}
-                color="#FFF"
-            />
+                    name="bookmark"
+                    size={25}
+                    color="#FFF"
+                />
+
             </TouchableOpacity>
 
-            
-
         </SafeAreaView>
+        
     )
+
 }
 
 const styles = StyleSheet.create({
     container:{
-        //backgroundColor: 'green',
         flexDirection: 'row',
         height: 80,
         alignItems: 'flex-end',

@@ -1,4 +1,3 @@
-import React, {useState} from "react";
 import {
     View,
     Text,
@@ -13,14 +12,20 @@ export default function GenresList({ data }){
     const navigation =  useNavigation();
 
     return(
+        
         <TouchableOpacity 
             style={styles.buttonView}
             onPress={() => navigation.navigate('Categories', {data: data})}
         >
+
             <View style={styles.constainer}>
+
                 <Text style={styles.title}>{data.name}</Text>
+
             </View>
+
         </TouchableOpacity>
+        
     )
 }
 

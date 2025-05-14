@@ -1,3 +1,4 @@
+import {useContext} from "react";
 import {
     View,
     Text,
@@ -6,18 +7,41 @@ import {
     TouchableOpacity
 } from "react-native";
 
+import { AppContext } from "../../Context";
+
 import { useNavigation } from '@react-navigation/native'
 
-export default function GamesList({ data }){ 
+import Feather from 'react-native-vector-icons/Feather'
 
+export default function FavoriteList({ data }){ 
+
+    const { deleteGame } = useContext(AppContext);
     const navigation = useNavigation();
+
+    async function handleDeleteGame(){
+        deleteGame(data)
+    }
 
     return(
         
         <TouchableOpacity
+            onLongPress={ handleDeleteGame }
             onPress={() => navigation.navigate('Detail', {name: data.slug})}
             style={styles.button}
         >
+
+            <TouchableOpacity 
+                style={styles.removeButton}
+                onPress={ handleDeleteGame }
+            >
+                
+                <Feather
+                    name="trash"
+                    size={20}
+                    color="#FFF"
+                />
+
+            </TouchableOpacity>
 
             <View>
 
@@ -48,7 +72,7 @@ export default function GamesList({ data }){
                 </View>
 
             </View>
-            
+
         </TouchableOpacity>
         
     )
@@ -61,6 +85,18 @@ const styles = StyleSheet.create({
         maxWidth: 400,
         marginHorizontal: 10,
         marginVertical: 10,
+    },
+    removeButton:{
+        backgroundColor: '#FF455F',
+        width: 30,
+        height: 30,
+        position: 'absolute',
+        zIndex: 99,
+        right: '3%',
+        top: '5%',
+        alignItems: 'center',
+        justifyContent:  'center',
+        borderRadius: '50%'
     },
     image:{
         width: '100%',

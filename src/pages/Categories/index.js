@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from "react";
+import {useEffect, useState, useContext} from "react";
 import { 
   SafeAreaView,
   Text, 
@@ -42,16 +42,19 @@ export default function Categories(){
   }, [])
 
   return(
+    
     <SafeAreaView style={styles.constainer}>
 
       <View style={styles.header}>
         
         <TouchableOpacity onPress={() => navigation.goBack()}>
+
           <Feather
             name="arrow-left"
             color="#FFF"
             size={40}
           />
+
         </TouchableOpacity>
         
         <Text style={styles.title}>{data.name}</Text>
@@ -70,19 +73,19 @@ export default function Categories(){
         </View>
 
       ): (
+
         <FlatList
           data={games}
           keyExtractor={(item) => item.id.toString()}
           renderItem={ ({item}) => <GamesList data={item} /> }
         />
+
       )}
 
-      
-      
-
-
     </SafeAreaView>
+    
   )
+  
 }
 
 const styles = StyleSheet.create({
