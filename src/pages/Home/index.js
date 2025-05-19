@@ -4,7 +4,8 @@ import {
   Text, 
   StyleSheet,
   FlatList,
-  ActivityIndicator, 
+  ActivityIndicator,
+  SafeAreaView 
 } from "react-native";
 
 import { AppContext } from "../../Context";
@@ -37,7 +38,7 @@ export default function Home(){
 
   return(
 
-    <View style={styles.container}>
+    <SafeAreaView  style={styles.container}>
 
       <Header/>
 
@@ -60,7 +61,7 @@ export default function Home(){
         style={styles.gamesList}
       />
       
-    </View>
+    </SafeAreaView >
 
   )
   

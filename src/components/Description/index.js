@@ -3,7 +3,8 @@ import {
     Text, 
     StyleSheet, 
     TouchableOpacity, 
-    SafeAreaView
+    SafeAreaView,
+    ScrollView
 } from "react-native";
 
 import Feather from 'react-native-vector-icons/Feather'
@@ -36,7 +37,9 @@ export default function Description({ closeModal, desc}){
                 
             </View>
 
-            <Text style={styles.description}>{desc}</Text>
+            <ScrollView>
+                <Text style={styles.description}>{desc}</Text>
+            </ScrollView>
 
         </SafeAreaView>
         
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     description:{
         color: '#FFF',
         marginTop: 20,
+        marginBottom: 20,
         fontSize: 15,
         marginHorizontal: 10
     }
